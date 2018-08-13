@@ -1,9 +1,10 @@
 package com.at.wangxu.job;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BigFile {
     public static void main(String[] args){
-        String string="1234567890123";
-        string=string.substring(string.length()-4);
-        System.out.println(string);
+        Map map=new HashMap(10,0.75f);
     }
 }
