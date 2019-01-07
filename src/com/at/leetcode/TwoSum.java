@@ -3,6 +3,9 @@ package com.at.leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *两数之和
+ */
 public class TwoSum {
     public static void main(String[] args){
         int[] arr={3,3};

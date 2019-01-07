@@ -28,7 +28,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../something/asm-3.2.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/chrome_download/spring-core-4.3.14.RELEASE.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

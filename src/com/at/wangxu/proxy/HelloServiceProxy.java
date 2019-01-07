@@ -1,7 +1,6 @@
 package com.at.wangxu.proxy;
 
-public class HelloServiceProxy implements HelloService {
-    @Override
+public class HelloServiceProxy  {
     public void say() {
         System.out.println("记录日志");
         target.say();
