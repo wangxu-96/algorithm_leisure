@@ -25,4 +25,5 @@ public class CreateArray {
             System.out.print(arr[i]+"\t");
         }
     }
+
 }
