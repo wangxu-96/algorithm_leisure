@@ -1,7 +1,6 @@
 package com.at.coucurrent;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * 线程池相关
@@ -10,10 +9,12 @@ public class ExecutorPool {
 
     public static void main(String[] args) {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(50);
+        ThreadPoolExecutor poolExecutor= new ThreadPoolExecutor(50, 60,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<>());
 
-        executorService.execute(()-> {
-            System.out.println("------------");
-        });
+        //poolExecutor.prestartAllCoreThreads();
+
+        poolExecutor.execute(()-> System.out.println(-1 << (Integer.SIZE-3)));
     }
 }

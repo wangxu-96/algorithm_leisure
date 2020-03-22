@@ -15,14 +15,9 @@ public class BetweenDate {
         int endDateInt=Integer.parseInt(endDate.substring(6));
 
         if (beginDateInt<endDateInt){
-            if (dateInt>=beginDateInt&&dateInt<=endDateInt){
-                return true;
-            }
+            return dateInt >= beginDateInt && dateInt <= endDateInt;
         }else{
-            if (dateInt>=beginDateInt||dateInt<=endDateInt){
-                return true;
-            }
+            return dateInt >= beginDateInt || dateInt <= endDateInt;
         }
-        return false;
     }
 }
