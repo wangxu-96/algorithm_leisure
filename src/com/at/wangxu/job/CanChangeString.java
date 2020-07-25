@@ -2,12 +2,14 @@ package com.at.wangxu.job;
 
 public class CanChangeString {
     public  static void main(String[] args){
-        changeStr(1,"1","2","3","4","5");
+        changeStr("1", "2","3");
     }
 
-    public static void changeStr(int i,String... keys){
-        for (int j = 0; j <keys.length ; j++) {
-            System.out.println(keys[j]);
-        }
+    public synchronized static String changeStr(String a,String b,String c){
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(a);
+        stringBuffer.append(b);
+        stringBuffer.append(c);
+        return stringBuffer.toString();
     }
 }

@@ -1,9 +1,9 @@
 package com.at.wangxu.tree;
 
 public class TreeNode {
-    private TreeNode lefTreeNode;
-    private TreeNode rightNode;
-    private int value;
+    public TreeNode lefTreeNode;
+    public TreeNode rightNode;
+    public int value;
 
     public TreeNode(int value) {
         this.value = value;

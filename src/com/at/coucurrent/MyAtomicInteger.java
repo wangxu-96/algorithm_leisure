@@ -35,4 +35,18 @@ public class MyAtomicInteger {
         return value;
     }
 
+    boolean compareAndSet(int expect,int update){
+       return unsafe.compareAndSwapInt(this, offset, expect, update);
+    }
+
+    public static void main(String[] args) {
+        MyAtomicInteger atomicInteger = new MyAtomicInteger();
+        atomicInteger.value = 0;
+
+        do {
+
+        }while (!atomicInteger.compareAndSet(0,1));
+        System.out.println(atomicInteger.value);
+    }
+
 }

@@ -8,7 +8,7 @@ import java.net.URLConnection;
 public class SpiderDemo {
     public static void main(String[] args) throws Exception {
         URLConnection urlConnection=new URL("http://odds.500.com/").openConnection();
-        BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"gb2312"));
+        BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
         String line;
         StringBuilder sb=new StringBuilder();
         while ((line=bufferedReader.readLine())!=null){

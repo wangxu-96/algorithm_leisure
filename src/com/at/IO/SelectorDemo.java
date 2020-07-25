@@ -16,10 +16,10 @@ public class SelectorDemo {
         ssc.socket().bind(new InetSocketAddress(8080));
         ssc.register(selector, SelectionKey.OP_ACCEPT);//注册监听的事件
         while (true) {
-            Set selectedKeys = selector.selectedKeys();//取得所有key集合
-            Iterator it = selectedKeys.iterator();
+            Set<SelectionKey> selectedKeys = selector.selectedKeys();//取得所有key集合
+            Iterator<SelectionKey> it = selectedKeys.iterator();
             while (it.hasNext()) {
-                SelectionKey key = (SelectionKey) it.next();
+                SelectionKey key = it.next();
                 if ((key.readyOps() & SelectionKey.OP_ACCEPT) == SelectionKey.OP_ACCEPT) {
                     ServerSocketChannel ssChannel = (ServerSocketChannel) key.channel();
                     SocketChannel sc = ssChannel.accept();//接受到服务端的请求

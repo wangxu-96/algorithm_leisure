@@ -1,26 +1,29 @@
 package com.at.wangxu.Thread;
 
-public class SynchronizedDemo implements Runnable{
-    private static int count=0;
-    public static void main(String[] args){
-        for (int i = 0; i < 10; i++) {
-            Thread thread=new Thread(new SynchronizedDemo());
-            thread.start();
-        }
-        try {
-            Thread.sleep(500);
-        }catch (InterruptedException e){
-            e.printStackTrace();
-        }
-        System.out.println("result: "+count);
+public class SynchronizedDemo {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Thread thread = new Thread(()->{
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    System.out.println("-------");
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+
+        thread.start();
+
+        thread.sleep(1000);
+
+        thread.interrupt();
+
+
+
     }
 
-    @Override
-    public void run() {
-        synchronized (SynchronizedDemo.class){
-            for (int i = 0; i < 10000; i++) {
-                count++;
-            }
-        }
-    }
 }

@@ -26,8 +26,16 @@ public class Fibonacci {
         return s[1];
     }
 
+    public int fi(int n){
+        if (n <= 1)
+            return 1;
+        return fi(n-1)+fi(n-2);
+    }
+
     public static void main(String[] args) {
         Fibonacci fibonacci = new Fibonacci();
-        System.out.println(fibonacci.fib(7));
+        long startTime = System.currentTimeMillis();
+        System.out.println(fibonacci.fi(50));
+        System.out.println("cost time : " + (System.currentTimeMillis()-startTime));
     }
 }
