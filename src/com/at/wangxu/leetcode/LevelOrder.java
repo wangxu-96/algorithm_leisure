@@ -41,6 +41,8 @@ public class LevelOrder {
     }
 
     public static List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null)
+            return new ArrayList<>();
         List<List<Integer>> lists = new ArrayList<>();
 
         Queue<TreeNode> queue = new LinkedList<>();
