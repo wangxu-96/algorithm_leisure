@@ -43,7 +43,7 @@ public class InvertTree {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode poll = queue.poll();
 
             TreeNode leftNode = poll.left;
@@ -64,7 +64,7 @@ public class InvertTree {
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(treeNode);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode poll = queue.poll();
             System.out.println(poll.val);
             if (poll.left != null)

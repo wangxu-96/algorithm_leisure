@@ -1,7 +1,7 @@
 package com.at.wangxu.Thread;
 
 public class ThreadLocalTest {
-    private ThreadLocal<String> localString = new ThreadLocal<>();
+    private final ThreadLocal<String> localString = new ThreadLocal<>();
 
     public static void main(String[] args) {
         ThreadLocalTest threadLocalTest = new ThreadLocalTest();
