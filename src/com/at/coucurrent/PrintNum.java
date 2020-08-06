@@ -2,7 +2,7 @@ package com.at.coucurrent;
 
 
 public class PrintNum {
-    private  static Object lock=new Object();
+    private  static final Object lock=new Object();
     private static int i=0;
     public static void main(String[] args){
         new Thread(() ->{

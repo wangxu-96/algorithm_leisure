@@ -6,12 +6,12 @@ public class QuickSort {
 
     int partition(int[] nums, int l, int r) {
 
-        // 随机选择一个数作为基准值，nums[hi] 就是基准值
+        //随机选择一个数作为基准值，nums[hi] 就是基准值
         swap(nums, (l + r) / 2, r);
 
         int i, j;
 
-        // 从左到右用每个数和基准值比较，
+        //从左到右用每个数和基准值比较，
         // 若比基准值小，则放到指针 i 所指向的位置。
         // 循环完毕后，i 指针之前的数都比基准值小
         for (i = l, j = l; j < r; j++) {
@@ -19,7 +19,7 @@ public class QuickSort {
                 swap(nums, i++, j);
             }
         }
-        // 末尾的基准值放置到指针 i 的位置，i 指针之后的数都比基准值大
+        //末尾的基准值放置到指针 i 的位置，i 指针之后的数都比基准值大
         swap(nums, i, r);
         return i;
     }
