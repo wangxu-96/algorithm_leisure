@@ -1,9 +1,6 @@
 package com.at.wangxu.Thread;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -13,6 +10,8 @@ public class ConcurrencyTest {
     private static int count=0;
     private static Lock lock=new ReentrantLock();
     public static void main(String[] args) throws InterruptedException {
+        ConcurrentHashMap map = new ConcurrentHashMap();
+        map.put("", "");
         ExecutorService executorService= Executors.newCachedThreadPool();
         Semaphore semaphore=new Semaphore(CONCURRENT_COUNT);
         CountDownLatch countDownLatch=new CountDownLatch(THREAD_COUNT);
