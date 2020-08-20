@@ -90,6 +90,12 @@ public class UpdateBoard {
         return board;
     }
 
+    /**
+     * dfs
+     * @param board board
+     * @param x x
+     * @param y y
+     */
     public void dfs(char[][] board, int x, int y) {
         if (x < 0 || x >= row || y < 0 || y >= column || board[x][y] != 'E')
             return;
@@ -105,6 +111,12 @@ public class UpdateBoard {
         }
     }
 
+    /**
+     * bfs
+     * @param board board
+     * @param x x
+     * @param y y
+     */
     public void bfs(char[][] board, int x, int y) {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{x, y});
@@ -129,6 +141,13 @@ public class UpdateBoard {
         }
     }
 
+    /**
+     * 计算x,y 在board中四周M的数量
+     * @param board board
+     * @param x x
+     * @param y y
+     * @return x,y 在board中四周M的数量
+     */
     public int getCount(char[][] board, int x, int y) {
         //上 下 左 右 左上 左下 右上 右下
         int sum = 0;
