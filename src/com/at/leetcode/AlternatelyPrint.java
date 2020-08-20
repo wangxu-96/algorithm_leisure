@@ -6,12 +6,13 @@ public class AlternatelyPrint {
 
     public static void main(String[] args) {
         new Thread(()->{
-            while (true){
+            while (i <=10){
                 synchronized (lock){
-                    if (i % 2 == 0 && i <=10){
+                    if (i % 2 == 0){
                         System.out.println(i);
                         i++;
                         lock.notify();
+                    }else {
                         try {
                             lock.wait();
                         } catch (InterruptedException e) {
@@ -22,12 +23,14 @@ public class AlternatelyPrint {
             }
         }).start();
         new Thread(()->{
-            while (true){
+            while (i <=10){
                 synchronized (lock){
-                    if (i % 2 == 1 && i <=10){
+                    if (i % 2 == 1){
                         System.out.println(i);
                         i++;
                         lock.notify();
+
+                    }else {
                         try {
                             lock.wait();
                         } catch (InterruptedException e) {

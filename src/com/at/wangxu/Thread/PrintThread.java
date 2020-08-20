@@ -18,11 +18,13 @@ public class PrintThread {
 
     public static void main(String[] args) {
         new Thread(() -> {
-            while (count <= 100) {
-                synchronized (lock) {
+
+            synchronized (lock) {
+                while (count <= 100) {
                     if (nextThread == 1) {
                         print();
                         nextThread = 2;
+                        lock.notifyAll();
                     } else {
                         try {
                             lock.wait();
@@ -30,16 +32,18 @@ public class PrintThread {
                             e.printStackTrace();
                         }
                     }
-                    lock.notifyAll();
+
                 }
             }
         }, "Thread-1").start();
         new Thread(() -> {
-            while (count <= 100) {
-                synchronized (lock) {
+
+            synchronized (lock) {
+                while (count <= 100) {
                     if (nextThread == 2) {
                         print();
                         nextThread = 3;
+                        lock.notifyAll();
                     } else {
                         try {
                             lock.wait();
@@ -47,16 +51,18 @@ public class PrintThread {
                             e.printStackTrace();
                         }
                     }
-                    lock.notifyAll();
+
                 }
             }
         }, "Thread-2").start();
         new Thread(() -> {
-            while (count <= 100) {
-                synchronized (lock) {
+
+            synchronized (lock) {
+                while (count <= 100) {
                     if (nextThread == 3) {
                         print();
                         nextThread = 1;
+                        lock.notifyAll();
                     } else {
                         try {
                             lock.wait();
@@ -64,7 +70,7 @@ public class PrintThread {
                             e.printStackTrace();
                         }
                     }
-                    lock.notifyAll();
+
                 }
             }
         }, "Thread-3").start();

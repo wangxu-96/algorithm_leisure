@@ -30,26 +30,25 @@ public class IsBalanced {
     static boolean flag = true;
 
     public static boolean isBalanced(TreeNode root) {
+        if (root == null)
+            return true;
         dfs(root);
         return flag;
     }
 
     static int dfs(TreeNode node) {
-        //flag为false 代表二叉树不平衡 不需要再循环了
         if (!flag)
             return -1;
         if (node == null)
             return 0;
-        //左子树高度
         int left = dfs(node.left);
-        //右子树高度
         int right = dfs(node.right);
-        if (Math.abs(left - right) > 1)
+        if (Math.abs(left-right) > 1)
             flag = false;
         return Math.max(left, right) + 1;
     }
 
     public static void main(String[] args) {
-
+        System.out.println(IsBalanced.isBalanced(new TreeNode(1)));
     }
 }
