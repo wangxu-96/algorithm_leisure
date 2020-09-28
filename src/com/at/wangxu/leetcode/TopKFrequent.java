@@ -24,31 +24,35 @@ import java.util.*;
 public class TopKFrequent {
 
     public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> count = new HashMap<>();
+        Map<Integer, Integer> count = new HashMap<>(nums.length);
         for (int num : nums) {
             count.put(num, count.getOrDefault(num, 0) + 1);
         }
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(count::get));
 
         for (Integer next : count.keySet()) {
-            priorityQueue.add(next);
-            if (priorityQueue.size() > k)
+            if (priorityQueue.size() >= k) {
+                if (count.get(next) < count.get(priorityQueue.peek()))
+                    continue;
                 priorityQueue.poll();
+            }
+            priorityQueue.add(next);
         }
 
 
         int[] arr = new int[k];
         int index = 0;
-        for (Integer integer : priorityQueue) {
-            arr[index++] = integer;
+        while (index < k) {
+            arr[index++] = priorityQueue.poll();
         }
         return arr;
     }
 
+
     public static void main(String[] args) {
         TopKFrequent frequent = new TopKFrequent();
-        //Arrays.stream(frequent.topKFrequent(new int[]{1,1,1,2,2,3}, 2)).forEach(System.out::println);
-        //Arrays.stream(frequent.topKFrequent(new int[]{1}, 1)).forEach(System.out::println);
-        Arrays.stream(frequent.topKFrequent(new int[]{4, 1, -1, 2, -1, 2, 3}, 2)).forEach(System.out::println);
+        Arrays.stream(frequent.topKFrequent(new int[]{1, 1, 1, 2, 2, 3}, 2)).forEach(System.out::println);
+//        Arrays.stream(frequent.topKFrequent(new int[]{1}, 1)).forEach(System.out::println);
+//        Arrays.stream(frequent.topKFrequent(new int[]{4, 1, -1, 2, -1, 2, 3}, 2)).forEach(System.out::println);
     }
 }
