@@ -30,12 +30,43 @@ public class FindRepeatNumber {
 //            countMap.put(num,null);
 //        }
 //        return -1;
-        int[] arr = new int[nums.length];
-        for (int num : nums) {
-            arr[num]++;
-            if (arr[num] > 1) return num;
+//        int[] arr = new int[nums.length];
+//        for (int num : nums) {
+//            arr[num]++;
+//            if (arr[num] > 1) return num;
+//        }
+
+
+        return duplicate(nums,nums.length,new int[1]);
+    }
+
+    public int duplicate(int[] numbers, int length, int[] duplication) {
+        if (numbers == null || length < 1) {
+            return -1;
         }
+        for (int e : numbers) {
+            if (e >= length) {
+                return -1;
+            }
+        }
+
+        for (int i = 0; i < length; ++i) {
+            while (numbers[i] != i) {
+                if (numbers[i] == numbers[numbers[i]]) {
+                    duplication[0] = numbers[i];
+                    return numbers[i];
+                }
+                swap(numbers, i, numbers[i]);
+            }
+        }
+
         return -1;
+    }
+
+    private void swap(int[] numbers, int i, int j) {
+        int t = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = t;
     }
 
     public static void main(String[] args) {
