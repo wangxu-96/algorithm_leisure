@@ -1,9 +1,6 @@
 package com.at.wangxu.leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 15. 3Sum
@@ -36,19 +33,31 @@ import java.util.Map;
 public class ThreeSum {
 
     public List<List<Integer>> threeSum(int[] nums) {
+
         if (nums.length < 3)
             return new ArrayList<>();
         int length = nums.length;
 
         Map<Integer, Integer> map = new HashMap<>();
+        Arrays.sort(nums);
 
         for (int i = 0; i < nums.length; i++) {
             map.put(nums[i],i);
         }
 
+
         List<List<Integer>> result = new ArrayList<>();
+        int pre1 = nums[0] - 1 ;
+        int pre2 = nums[0] - 1 ;
         for (int i = 0; i < length - 2; i++) {
+            if (nums[i] == pre1)
+                continue;
+
+            pre1 = nums[i];
             for (int j = i + 1; j < length - 1; j++) {
+                if (nums[j] == pre2)
+                    continue;
+                pre2 = nums[j];
                 int sub = -nums[i] - nums[j];
                 if (map.containsKey(sub) && map.get(sub) > j){
                     List<Integer> list = new ArrayList<>();
