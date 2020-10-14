@@ -1,7 +1,10 @@
 package com.at.wangxu.net;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -31,9 +34,11 @@ public class Server {
                 SelectionKey selectionKey = iterator.next();
                 if (selectionKey.isAcceptable()) {
                     // 处理逻辑
+
                 }
                 if (selectionKey.isReadable()) {
                     // 处理逻辑
+                    ByteBuffer allocate = ByteBuffer.allocate(10);
                 }
             }
         }
