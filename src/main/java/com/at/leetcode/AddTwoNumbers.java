@@ -27,10 +27,7 @@ public class AddTwoNumbers {
             int l1_val = l1 ==null? 0:l1.val;
             int l2_val = l2 ==null? 0:l2.val;
             int sum = l1_val + l2_val + flag;
-            if (sum >= 10)
-                flag = 1;
-            else
-                flag = 0;
+            flag = sum / 10;
             index.next = new ListNode(sum %10);
             index = index.next;
             if (l1 != null){
