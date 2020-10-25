@@ -6,7 +6,31 @@ import java.util.Arrays;
 public class Solution {
     ArrayDeque<Integer> deq = new ArrayDeque<>();
     int[] nums;
-
+    public boolean isLongPressedName(String name, String typed) {
+        int a = 0;
+        int b = 0;
+        int m = name.length();
+        int n = typed.length();
+        char pre = '1';
+        while(a <= m - 1){
+            if (b >= n)
+                return false;
+            if(name.charAt(a) == typed.charAt(b)){
+                pre = name.charAt(a);
+                a ++;
+            }else {
+                if (pre != typed.charAt(b))
+                    return false;
+            }
+            b ++;
+        }
+        while (b <= n-1){
+            if (typed.charAt(b) != pre)
+                return false;
+            b ++;
+        }
+        return true;
+    }
     public void clean_deque(int i, int k) {
         // remove indexes of elements not from sliding window
         if (!deq.isEmpty() && deq.getFirst() == i - k)
@@ -51,9 +75,11 @@ public class Solution {
 //        Arrays.stream(ints).forEach(System.out::println);
 //        int[] ints = slidingWindow.maxSlidingWindow(new int[]{1, -1}, 1);
 //        Arrays.stream(ints).forEach(System.out::println);
-        long startTime = System.currentTimeMillis();
-        int[] ints = solution.maxSlidingWindow(new int[]{-7, -8, 7, 5, 7, 1, 6, 0}, 4);
-        Arrays.stream(ints).forEach(System.out::println);
-        System.out.println("cost time : " + (System.currentTimeMillis() - startTime));
+//        long startTime = System.currentTimeMillis();
+//        int[] ints = solution.maxSlidingWindow(new int[]{-7, -8, 7, 5, 7, 1, 6, 0}, 4);
+//        Arrays.stream(ints).forEach(System.out::println);
+//        System.out.println("cost time : " + (System.currentTimeMillis() - startTime));
+
+        System.out.println(new Solution().isLongPressedName("alex", "alexxr"));
     }
 }

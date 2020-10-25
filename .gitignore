@@ -58,3 +58,5 @@ src/com/.DS_Store
 src/com/at/.DS_Store
 src/com/at/IO/.DS_Store
 src/com/at/wangxu/opertorsystem/
+*.iml
+.idea/
