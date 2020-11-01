@@ -84,6 +84,19 @@ public class Connect {
         return root;
     }
 
+    //https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/solution/tian-chong-mei-ge-jie-dian-de-xia-yi-ge-you-ce-2-4/
+    public void dfs(Node node){
+        if(node == null)
+            return;
+        if(node.left != null)
+            node.left.next = node.right;
+        if(node.next != null && node.right != null)
+            node.right.next = node.next.left;
+
+        dfs(node.left);
+        dfs(node.right);
+    }
+
     public static void main(String[] args) {
         Connect connect = new Connect();
 

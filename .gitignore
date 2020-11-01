@@ -58,3 +58,14 @@ src/com/.DS_Store
 src/com/at/.DS_Store
 src/com/at/IO/.DS_Store
 src/com/at/wangxu/opertorsystem/
+*.iml
+.idea/
+.settings/
+.project
+.classpath
+.factorypath
+.vscode/
+.project
+.vscode/settings.json
+algorithm.iml
+.idea/misc.xml
