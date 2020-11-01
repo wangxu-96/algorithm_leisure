@@ -1,6 +1,5 @@
 package com.at.wangxu.competition;
 
-import java.util.Stack;
 
 /**
  * 5535. 括号的最大嵌套深度
