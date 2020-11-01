@@ -41,13 +41,16 @@ public class WordBreak {
 
         int count = (int) Math.pow(2, s.length());
 
+        List<String> list = new ArrayList<>();
         for (int i = 0; i <= count; i++) {
             int temp = i;
+            int index = s.length();
             while (temp > 0) {
-                
+
             }
         }
 
+        return list;
     }
 
     public static void main(String[] args) {
