@@ -29,6 +29,32 @@ public class InsertionSortList {
         }
     }
 
+    public ListNode insert(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode dummyNode = new ListNode(Integer.MIN_VALUE);
+        dummyNode.next = head;
+
+        ListNode start = head.next;
+        head.next = null;
+        while(start != null) {
+            ListNode next = start.next;
+            start.next = null;
+            ListNode d = dummyNode;
+            while (d.next != null) {
+                if (d.val <= start.val && d.next.val > start.val) break;
+                d = d.next;
+            }
+
+            ListNode temp = d.next;
+            d.next = start;
+            start.next = temp;
+
+            start = next;
+        }
+
+        return dummyNode.next;
+    }
+
     public ListNode insertionSortList(ListNode head){
         if (head == null)
             return null;

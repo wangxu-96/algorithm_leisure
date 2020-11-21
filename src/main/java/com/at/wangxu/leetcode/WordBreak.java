@@ -44,20 +44,40 @@ public class WordBreak {
         List<String> list = new ArrayList<>();
         for (int i = 0; i <= count; i++) {
             int temp = i;
-            int index = s.length();
+            int index = 0;
+            StringBuilder copy = new StringBuilder(s);
+            StringBuilder stringBuilder = new StringBuilder();
+            boolean flag = true;
             while (temp > 0) {
-
+                if ((temp & 1) == 0) {
+                    temp >>= 1;
+                    index ++;
+                }else {
+                    if (!dict.contains(copy.substring(0,index))) {
+                        flag = false;
+                        break;
+                    }
+                    stringBuilder.append(copy.substring(0,index));
+                    copy = new StringBuilder(copy.substring(index));
+                }
+                index ++;
             }
+
+            if (!flag) continue;
+
+            if (dict.contains(copy.substring(index))) list.add(stringBuilder.toString());
+
         }
 
         return list;
     }
 
     public static void main(String[] args) {
+        // System.out.println("catsanddog".substring(0,1));
         WordBreak wordBreak = new WordBreak();
-        wordBreak.wordBreak("catsanddog", new ArrayList<>(Arrays.asList("cat", "cats", "and", "sand", "dog")));
-        wordBreak.wordBreak("pineapplepenapple", new ArrayList<>(Arrays.asList("apple", "pen", "applepen", "pine", "pineapple")));
-        wordBreak.wordBreak("catsandog", new ArrayList<>(Arrays.asList("cats", "dog", "sand", "and", "cat")));
+        wordBreak.wordBreak("catsanddog", new ArrayList<>(Arrays.asList("cat", "cats", "and", "sand", "dog"))).forEach(System.out::println);;
+        // wordBreak.wordBreak("pineapplepenapple", new ArrayList<>(Arrays.asList("apple", "pen", "applepen", "pine", "pineapple")));
+        // wordBreak.wordBreak("catsandog", new ArrayList<>(Arrays.asList("cats", "dog", "sand", "and", "cat")));
     }
 
 }

@@ -1,6 +1,10 @@
 package com.at.wangxu.leetcode;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -20,19 +24,38 @@ import java.util.Stack;
  */
 public class ReversePrint {
 
-    public int[] reversePrint(ListNode head) {
-        Stack<Integer> stack = new Stack<>();
+    // public int[] reversePrint(ListNode head) {
+    //     Stack<Integer> stack = new Stack<>();
 
-        while (head != null){
-            stack.push(head.val);
-            head = head.next;
+    //     while (head != null){
+    //         stack.push(head.val);
+    //         head = head.next;
+    //     }
+    //     int size = stack.size();
+    //     int[] result = new int[size];
+    //     for (int i = 0; i < size; i++) {
+    //         result[i] = stack.pop();
+    //     }
+    //     return result;
+    // }
+
+    public int[] reversePrint(ListNode head) {
+        Deque<ListNode> list = new LinkedList<>();
+
+        dfs(head, list);
+        int[] ints = new int[list.size()];
+
+        int index = 0;
+        for (int i : ints) {
+            ints[index ++] = list.removeFirst().val;
         }
-        int size = stack.size();
-        int[] result = new int[size];
-        for (int i = 0; i < size; i++) {
-            result[i] = stack.pop();
-        }
-        return result;
+        return ints;
+    }
+
+    public void dfs(ListNode hNode,Deque<ListNode> list) {
+        if (hNode == null) return;
+        list.addFirst(hNode);
+        dfs(hNode.next, list);
     }
 
     public static void main(String[] args) {
