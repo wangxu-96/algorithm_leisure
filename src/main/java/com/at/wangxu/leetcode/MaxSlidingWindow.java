@@ -50,9 +50,11 @@ public class MaxSlidingWindow {
 
         for (int i = 0; i < nums.length; i++) {
 
+            //clean not_max element
             while (!queue.isEmpty() && nums[queue.getLast()] < nums[i]) {
                 queue.removeLast();
             }
+            //clean not now sliding window
             while (!queue.isEmpty() && queue.element() < i - k + 1 && i - k + 1 >= 0) {
                 queue.removeFirst();
             }

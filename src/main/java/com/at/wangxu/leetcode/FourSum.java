@@ -33,44 +33,36 @@ public class FourSum {
 
 
         List<List<Integer>> result = new ArrayList<>();
-        int pre1 = nums[0] - 1;
-        int pre2 = nums[0] - 1;
-        int pre3 = nums[0] - 1;
-        int pre4 = nums[0] - 1;
+        
         for (int i = 0; i < length - 3; i++) {
-            if (nums[i] == pre1)
+            if (i > 0 && nums[i] == nums[i - 1])
                 continue;
-            pre1 = nums[i];
+            
             for (int j = i + 1; j < length - 2; j++) {
-                if (nums[j] == pre2)
+                if (j > i + 1 && nums[j] == nums[j - 1])
                     continue;
-                pre2 = nums[j];
-                for (int k = j + 1; k < length - 1; k++) {
-                    if (nums[k] == pre3)
-                        continue;
-                    pre3 = nums[k];
-
-                    for (int l = k + 1; l < length; l++) {
-                        if (nums[l] == pre4)
-                            continue;
-                        pre4 = nums[l];
-                        if (nums[l] + nums[i] + nums[j] + nums[k] == target) {
-                            List<Integer> list = new ArrayList<>();
-                            list.add(nums[i]);
-                            list.add(nums[j]);
-                            list.add(nums[k]);
-                            list.add(nums[l]);
-                            result.add(list);
+                int left = j + 1;
+                int right = nums.length - 1;
+                while (left < right) {
+                    int sum = nums[i] + nums[j] + nums[left] + nums[right];
+                    if (sum == target) {
+                        result.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                        while (left < right && nums[left] == nums[left + 1]) {
+                            left++;
                         }
+                        left++;
+                        while (left < right && nums[right] == nums[right - 1]) {
+                            right--;
+                        }
+                        right--;
+                    } else if (sum < target) {
+                        left++;
+                    } else {
+                        right--;
                     }
-                    pre4 = nums[0] - 1;
                 }
-                pre3 = nums[0] - 1;
-                pre4 = nums[0] - 1;
             }
-            pre2 = nums[0] - 1;
-            pre3 = nums[0] - 1;
-            pre4 = nums[0] - 1;
+           
         }
         return result;
     }
