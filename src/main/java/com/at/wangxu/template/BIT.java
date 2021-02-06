@@ -12,14 +12,14 @@ public class BIT {
         this.tree = new int[n + 1];
     }
 
-    public static int lowbit(int x) {
+    public static int lowBit(int x) {
         return x & (-x);
     }
 
     public void update(int x, int d) {
         while (x <= n) {
             tree[x] += d;
-            x += lowbit(x);
+            x += lowBit(x);
         }
     }
 
@@ -27,7 +27,7 @@ public class BIT {
         int ans = 0;
         while (x != 0) {
             ans += tree[x];
-            x -= lowbit(x);
+            x -= lowBit(x);
         }
         return ans;
     }
