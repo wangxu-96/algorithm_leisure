@@ -1,10 +1,11 @@
-package com.at.IO;
+package com.at.wangxu.netty;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Date;
 
 public class IOClient {
+
     public static void main(String[] args) {
         new Thread(() -> {
             try {
