@@ -2,7 +2,6 @@ package com.at.wangxu.leetcode;
 
 import java.util.*;
 
-@SuppressWarnings("unused")
 public class TupleSameProduct {
 
     static class Node{
